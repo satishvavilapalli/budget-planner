@@ -1,4 +1,5 @@
 // src/OverviewTab.jsx
+import API_BASE_URL from "./apiConfig";
 import React, { useState, useEffect, useMemo } from "react";
 import {
   BarChart,
@@ -78,7 +79,8 @@ const OverviewTab = ({ selectedMonth }) => {
   const fetchOverview = async (params = {}) => {
     setLoading(true);
     try {
-      let url = "http://127.0.0.1:5000/api/overview";
+      // let url = "http://127.0.0.1:5000/api/overview";   keep this.
+      let url = `${API_BASE_URL}/api/overview`;   
       const query = new URLSearchParams();
       if (params.start) query.append("start", params.start);
       if (params.end) query.append("end", params.end);
@@ -108,7 +110,8 @@ const OverviewTab = ({ selectedMonth }) => {
   const fetchAggregatedExpected = async (params = {}) => {
     setContribLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/expected");
+      // const res = await fetch("http://127.0.0.1:5000/api/expected");
+      const res = await fetch(`${API_BASE_URL}/api/expected`);  
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const rows = data.last6months || [];

@@ -24,3 +24,4 @@ yarn-error.log*
 backend/venv/
 backend/token.txt
 backend/venv/
+.env

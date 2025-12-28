@@ -14,7 +14,9 @@ const ScenarioTab = () => {
 
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/optimize", {
+      // const response = await fetch("http://127.0.0.1:5000/api/optimize", {   -- revert back
+      const response = await fetch(`${API_BASE_URL}/api/optimize`, {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ targetBudget: budget }),
@@ -30,7 +32,8 @@ const ScenarioTab = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/config")
+    // fetch("http://127.0.0.1:5000/api/config")    - revert it back
+    fetch(`${API_BASE_URL}/api/config`)
       .then((res) => res.json())
       .then((data) => {
         const initialBudget = data.baseBudget || 428710000;
