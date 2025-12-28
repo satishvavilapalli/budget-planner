@@ -157,3 +157,4 @@ widgetsnbextension==4.0.15
 wrapt==2.0.1
 xarray==2025.12.0
 xarray-einstats==0.9.1
+gunicorn
